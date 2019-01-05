@@ -1,0 +1,99 @@
+import React, { Component } from 'react';
+import { Form, Input, DatePicker } from 'antd';
+import { SearchableTable } from 'antdx';
+
+const { SearchForm } = SearchableTable;
+
+export default 
+@SearchForm
+class CustomSearchForm extends Component {
+  // 查询数据转换
+  normalize = (vals) => {
+    console.log(vals);
+    const { createDate, ...values } = vals;
+    return {
+      createDate: createDate && createDate.valueOf(),
+      ...values
+    };
+  }
+
+  render(){
+    const { form } = this.props;
+    const { getFieldDecorator } = form;
+
+    return (
+      &ltForm layout="inline"&gt;
+        &ltForm.Item label='产品id'&gt;
+          {
+            getFieldDecorator('id')(
+              &ltInput placeholder='请输入产品id' /&gt;
+            )
+          }
+        &lt/Form.Item&gt;
+        &ltForm.Item label='产品名'&gt;
+          {
+            getFieldDecorator('name')(
+              &ltInput placeholder='请输入产品名' /&gt;
+            )
+          }
+        &lt/Form.Item&gt;
+        &ltForm.Item label='制造商'&gt;
+          {
+            getFieldDecorator('creator')(
+              &ltInput placeholder='请输入制造商' /&gt;
+            )
+          }
+        &lt/Form.Item&gt;
+        &ltForm.Item label='生产日期'&gt;
+          {
+            getFieldDecorator('createDate')(
+              &ltDatePicker placeholder='请输入生产日期' format='YYYY-MM-DD HH:mm' /&gt;
+            )
+          }
+        &lt/Form.Item&gt;
+      &lt/Form&gt;
+    )
+  }
+}
+
+import React, { Component } from 'react';
+import { SearchableTable } from 'antdx';
+import Form from './Form';
+
+const { Column } = SearchableTable;
+const dataSource = [{
+  id: 1096545345327,
+  name: '荣耀P20',
+  creator: '华为',
+  createDate: '2018-03-21'
+}];
+
+export default class Table extends Component {
+  // ajax 查询远程数据
+  fetch = async params => {
+    console.log('params is', params);
+    // await doAjax();
+    return {
+      dataSource,
+      pagination: {
+        current: 1,
+        total: 0,
+        pageSize: 10
+      }
+    };
+  }
+
+  render(){
+    return (
+      &ltSearchableTable defaultDataSource={[]} 
+        form={doSearch => &ltForm doSearch={doSearch} /&gt;} 
+        fetch={this.fetch}
+        rowKey={r => r.id}&gt;
+        &ltColumn dataIndex='id' title='产品id' /&gt;
+        &ltColumn dataIndex='name' title='产品名' /&gt;
+        &ltColumn dataIndex='creator' title='制造商' /&gt;
+        &ltColumn dataIndex='createDate' title='生产日期' /&gt;
+      &lt/SearchableTable&gt;
+    )
+  }
+}
