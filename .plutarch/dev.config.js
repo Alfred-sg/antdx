@@ -1,7 +1,6 @@
 module.exports = {
   template: '../examples',
   entry: {
-    index: 'examples/index',
     SearchableTable: 'examples/SearchableTable'
   },
   alias: {
