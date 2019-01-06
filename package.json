@@ -1,8 +1,8 @@
 {
-  "name": "antdx",
-  "version": "1.0.0",
+  "name": "antd-expand",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/antdx.js",
   "scripts": {
     "dev": "plutarch server",
     "build": "plutarch build",
