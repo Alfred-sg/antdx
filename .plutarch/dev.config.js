@@ -1,10 +1,11 @@
 module.exports = {
   template: '../examples',
   entry: {
+    index: 'examples/index',
     SearchableTable: 'examples/SearchableTable'
   },
   alias: {
-    antdx: 'src',
+    antdx: 'src/antdx.js',
     components: 'src/components'
   },
   module: {
@@ -19,5 +20,6 @@ module.exports = {
         ]
       ]
     }
-  }
+  },
+  splitChunks: {}
 };

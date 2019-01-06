@@ -6,12 +6,11 @@
   "scripts": {
     "dev": "plutarch server",
     "build": "plutarch build",
-    "storybook": "start-storybook -h 127.0.0.1 -p 9001 -s ./public -c .storybook",
-    "build:storybook": "build-storybook -s ./public -c .storybook -o .out",
+    "docs": "plutarch docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
     "omit": "^1.0.1",
@@ -19,12 +18,15 @@
     "warning": "^4.0.2"
   },
   "devDependencies": {
-    "@storybook/react": "^4.1.4",
     "antd": "^3.11.6",
     "babel-plugin-import": "^1.11.0",
     "plutarch": "^3.0.11",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
+  },
+  "peerDependencies": {
+    "antd": "^3.11.6",
+    "react": "^16.7.0"
   },
   "keywords": [],
   "repository": {
