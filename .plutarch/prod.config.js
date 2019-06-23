@@ -7,5 +7,6 @@ module.exports = {
     'react': 'React',
     'antd': 'antd'
   },
+  compress: false,
   devtool: false
 };

@@ -18,7 +18,7 @@ export default function SearchFormDecorator(FormContent){
       const { doSearch, form } = this.props;
       let values = form.getFieldsValue();
       // 查询数据转换
-      values = this.form && this.form.normalize ? this.form.normalize(values) : values;
+      values = this.form && this.form.transform ? this.form.transform(values) : values;
       doSearch && doSearch(values);
     }
   

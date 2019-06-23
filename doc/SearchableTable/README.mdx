@@ -1,0 +1,22 @@
+---
+name: SearchableTable
+---
+
+import { Playground, Props } from 'docz'
+import antdx from '../../dist/antdx';
+import '../../dist/antdx.css';
+
+# SearchableTable
+
+<Props of={antdx.SearchableTable} />
+
+## Basic usage
+
+<Playground>
+  <antdx.SearchableTable dataSource={[{ id: 1096545345327, name: '荣耀P20', creator: '华为', createDate: '2018-03-21' }]} rowKey={r => r.id}>
+    <antdx.SearchableTable.Column dataIndex='id' title='产品id' />
+    <antdx.SearchableTable.Column dataIndex='name' title='产品名' />
+    <antdx.SearchableTable.Column dataIndex='creator' title='制造商' />
+    <antdx.SearchableTable.Column dataIndex='createDate' title='生产日期' />
+  </antdx.SearchableTable>
+</Playground>

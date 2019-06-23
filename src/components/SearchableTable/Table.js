@@ -21,18 +21,18 @@ const defaultPagination = {
  */
 export default class SearchableTable extends Component {
   static propTypes = {
-    defaultPagination: paginationTypes,
-    pagination: PropTypes.oneOfType([paginationTypes, PropTypes.bool]),
-    defaultSearchInfo: PropTypes.object,
-    searchInfo: PropTypes.object,
-    defaultDataSource: PropTypes.array,
-    dataSource: PropTypes.array,
-    form: PropTypes.func,
-    fetch: PropTypes.func,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    tableClassName: PropTypes.string,
-    tableStyle: PropTypes.object
+    defaultPagination: paginationTypes,// 默认分页
+    pagination: PropTypes.oneOfType([paginationTypes, PropTypes.bool]),// 分页
+    defaultSearchInfo: PropTypes.object,// 默认搜索
+    searchInfo: PropTypes.object,// 搜索
+    defaultDataSource: PropTypes.array,// 默认列表数据
+    dataSource: PropTypes.array,// 列表数据
+    form: PropTypes.func,// 搜索表单渲染函数
+    fetch: PropTypes.func,// 获取列表数据的方法
+    className: PropTypes.string,// 样式类
+    style: PropTypes.object,// 样式
+    tableClassName: PropTypes.string,// 表格样式类
+    tableStyle: PropTypes.object// 表格样式
   };
   static getDerivedStateFromProps(props, state){
     const { pagination: paginationState = {} } = state;
@@ -106,10 +106,15 @@ export default class SearchableTable extends Component {
       ...state, 
       loading: false
     };
+    this.unmounted = false;
   }
   
   componentDidMount(){
     this.reload();
+  }
+
+  componentWillUnmount(){
+    this.unmounted = true;
   }
 
   /**
@@ -129,15 +134,15 @@ export default class SearchableTable extends Component {
   /**
    * 获取远程数据
    */
-  fetch = async ({ pagination: paginationParam, searchInfo }) => {
+  fetch = async (params) => {
     const { fetch } = this.props;
     if ( !fetch ) return;
 
     this.setState({
       loading: true
     });
-    const res = await fetch({ pagination: paginationParam, searchInfo });
-    if( !res ){
+    const res = await fetch(params);
+    if( !res && !this.unmounted ){
       this.setState({
         loading: false
       });
@@ -148,25 +153,22 @@ export default class SearchableTable extends Component {
       'Return of fetch prop must contain attributes with dataSource and pagination!');
 
     const { dataSource, pagination } = res;
-    this.setState({
-      dataSource,
-      pagination: pagination || defaultPagination,
-      searchInfo,
-      loading: false
-    });
+    const { searchInfo } = params;
+    if ( !this.unmounted )
+      this.setState({
+        dataSource,
+        pagination: pagination || defaultPagination,
+        searchInfo,
+        loading: false
+      });
   }
 
   /**
    * 表单搜索
    */
   doSearch = (searchInfo = {}) => {
-    const { pagination: { current, pageSize } } = this.state;
     const params = { 
-      searchInfo, 
-      pagination: { 
-        current, 
-        pageSize 
-      }
+      searchInfo
     };
     this.fetch(params);
   }

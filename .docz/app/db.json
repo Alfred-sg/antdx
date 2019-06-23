@@ -1,0 +1,293 @@
+{
+  "config": {
+    "title": "Antd Expand",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "0.0.1",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {},
+    "separator": "-",
+    "plugins": [
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "props": [
+    {
+      "key": "src/components/SearchableTable/Column.js",
+      "value": [
+        {
+          "description": "虚拟组件，用于收集列渲染规则",
+          "displayName": "Column",
+          "methods": [],
+          "actualName": "Column"
+        }
+      ]
+    },
+    {
+      "key": "src/components/SearchableTable/Table.js",
+      "value": [
+        {
+          "description": "带搜索表单的表格",
+          "displayName": "SearchableTable",
+          "methods": [
+            {
+              "name": "reload",
+              "docblock": "根据 state 状态加载远程数据",
+              "modifiers": [],
+              "params": [],
+              "returns": null,
+              "description": "根据 state 状态加载远程数据"
+            },
+            {
+              "name": "fetch",
+              "docblock": "获取远程数据",
+              "modifiers": [
+                "async"
+              ],
+              "params": [
+                {
+                  "name": "params"
+                }
+              ],
+              "returns": null,
+              "description": "获取远程数据"
+            },
+            {
+              "name": "doSearch",
+              "docblock": "表单搜索",
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "searchInfo"
+                }
+              ],
+              "returns": null,
+              "description": "表单搜索"
+            },
+            {
+              "name": "onTableChange",
+              "docblock": "表格 change",
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "pagination"
+                },
+                {
+                  "name": "filters"
+                },
+                {
+                  "name": "sorter"
+                }
+              ],
+              "returns": null,
+              "description": "表格 change"
+            },
+            {
+              "name": "renderForm",
+              "docblock": "渲染搜索表单。拆分，便于继承",
+              "modifiers": [],
+              "params": [],
+              "returns": null,
+              "description": "渲染搜索表单。拆分，便于继承"
+            },
+            {
+              "name": "renderTable",
+              "docblock": "渲染表格。拆分，便于继承",
+              "modifiers": [],
+              "params": [],
+              "returns": null,
+              "description": "渲染表格。拆分，便于继承"
+            }
+          ],
+          "actualName": "SearchableTable",
+          "props": {
+            "defaultPagination": {
+              "type": {
+                "name": "custom",
+                "raw": "paginationTypes"
+              },
+              "required": false,
+              "description": ""
+            },
+            "pagination": {
+              "type": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "custom",
+                    "raw": "paginationTypes"
+                  },
+                  {
+                    "name": "bool"
+                  }
+                ]
+              },
+              "required": false,
+              "description": ""
+            },
+            "defaultSearchInfo": {
+              "type": {
+                "name": "object"
+              },
+              "required": false,
+              "description": ""
+            },
+            "searchInfo": {
+              "type": {
+                "name": "object"
+              },
+              "required": false,
+              "description": ""
+            },
+            "defaultDataSource": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "dataSource": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "form": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            },
+            "fetch": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            },
+            "className": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "style": {
+              "type": {
+                "name": "object"
+              },
+              "required": false,
+              "description": ""
+            },
+            "tableClassName": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "tableStyle": {
+              "type": {
+                "name": "object"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "examples/components/SearchableTable/CustomForm/Form.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "CustomSearchForm",
+          "methods": [
+            {
+              "name": "doSearch",
+              "docblock": null,
+              "modifiers": [],
+              "params": [],
+              "returns": null
+            },
+            {
+              "name": "doReset",
+              "docblock": null,
+              "modifiers": [],
+              "params": [],
+              "returns": null
+            }
+          ],
+          "actualName": "CustomSearchForm",
+          "props": {
+            "doSearch": {
+              "type": {
+                "name": "func"
+              },
+              "required": true,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "examples/components/SearchableTable/WithForm/Form.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "CustomSearchForm",
+          "methods": [
+            {
+              "name": "normalize",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "vals",
+                  "type": null
+                }
+              ],
+              "returns": null
+            }
+          ],
+          "actualName": "CustomSearchForm"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "key": "doc/SearchableTable/README.mdx",
+      "value": {
+        "name": "SearchableTable",
+        "id": "75d7766910c10752bd8b9fea668d634b",
+        "filepath": "doc/SearchableTable/README.mdx",
+        "link": "",
+        "slug": "doc-searchable-table-readme",
+        "route": "/doc-searchable-table-readme",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "searchabletable",
+            "depth": 1,
+            "value": "SearchableTable"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
+    }
+  ]
+}
