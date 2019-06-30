@@ -4,20 +4,20 @@ module.exports = {
     SearchableTable: 'examples/SearchableTable'
   },
   alias: {
-    antdx: 'src/antdx.js',
+    antdx: 'src/index.tsx',
     components: 'src/components'
   },
-  module: {
-    babel: {
-      plugins: [
-        [
-          require.resolve('babel-plugin-import'),
-          {
-            "libraryName": "antd",
-            "style": 'css'
-          }
-        ]
-      ]
-    }
-  }
+  // module: {
+  //   babel: {
+  //     plugins: [
+  //       [
+  //         require.resolve('babel-plugin-import'),
+  //         {
+  //           "libraryName": "antd",
+  //           "style": 'css'
+  //         }
+  //       ]
+  //     ]
+  //   }
+  // }
 };
